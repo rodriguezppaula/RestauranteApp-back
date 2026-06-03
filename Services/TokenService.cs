@@ -14,10 +14,11 @@ namespace RestauranteAPI.Services
             var claims = new[]
             {
             new Claim(JwtRegisteredClaimNames.Sub, usuario.Id.ToString()),
+            new Claim(ClaimTypes.NameIdentifier, usuario.Id.ToString()),
             new Claim(JwtRegisteredClaimNames.Email, usuario.Email),
             new Claim(ClaimTypes.Role, usuario.Rol),
             new Claim("nombre", usuario.Nombre)
-        };
+};
 
             var key = new SymmetricSecurityKey(
                 Encoding.UTF8.GetBytes(config["Jwt:Key"]!));
