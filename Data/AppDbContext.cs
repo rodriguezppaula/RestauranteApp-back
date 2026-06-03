@@ -18,10 +18,12 @@ namespace RestauranteAPI.Data
                 .HasKey(pp => new { pp.PedidoId, pp.PlatoId });
 
             modelBuilder.Entity<Usuario>()
-                .HasIndex(u => u.Email).IsUnique();
+                .HasIndex(u => u.Email)
+                .IsUnique();
 
             modelBuilder.Entity<Plato>()
-                .Property(p => p.Precio).HasPrecision(10, 2);
+                .Property(p => p.Precio)
+                .HasPrecision(10, 2);
 
             modelBuilder.Entity<Categoria>().HasData(
                 new Categoria { Id = 1, Nombre = "Entradas" },
@@ -30,7 +32,6 @@ namespace RestauranteAPI.Data
                 new Categoria { Id = 4, Nombre = "Postres" }
             );
 
-            // Hash fijo para el seed (evita recalcular en cada migración)
             modelBuilder.Entity<Usuario>().HasData(new Usuario
             {
                 Id = 1,

@@ -81,6 +81,9 @@ namespace RestauranteAPI.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("Numero")
+                        .IsUnique();
+
                     b.ToTable("Mesas");
                 });
 
